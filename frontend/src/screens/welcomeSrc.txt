@@ -1,0 +1,243 @@
+import React from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+
+export default function WelcomeScreen({ navigation }) {
+  return (
+    <ScrollView style={styles.screen}>
+
+      {/* ───── HERO SECTION ───── */}
+      <View style={styles.hero}>
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>For Doctors & Clinics</Text>
+        </View>
+
+        <Text style={styles.heroTitle}>
+          Manage Patients,{'\n'}
+          <Text style={styles.heroAccent}>Not Paperwork.</Text>
+        </Text>
+
+        <Text style={styles.heroSub}>
+          Everything you need to run your clinic — appointments, 
+          patient records, and more. In one place.
+        </Text>
+
+        <View style={styles.btnRow}>
+          <TouchableOpacity
+            style={styles.btnPrimary}
+            onPress={() => navigation.navigate('Signup')}
+          >
+            <Text style={styles.btnPrimaryText}>Get Started</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.btnSecondary}
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={styles.btnSecondaryText}>Log In</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* ───── FEATURES SECTION ───── */}
+      <View style={styles.section}>
+        <Text style={styles.sectionLabel}>WHAT YOU GET</Text>
+        <Text style={styles.sectionTitle}>Built for your clinic</Text>
+
+        <FeatureCard
+          emoji="👥"
+          title="Patient Records"
+          desc="Add and manage patient profiles with history and visit details — all in one tap."
+          iconBg="#E1F5EE"
+        />
+        <FeatureCard
+          emoji="📅"
+          title="Appointments"
+          desc="View today's schedule at a glance. Never miss or double-book again."
+          iconBg="#E6F1FB"
+        />
+        <FeatureCard
+          emoji="📊"
+          title="Smart Dashboard"
+          desc="See total patients, upcoming visits, and key stats the moment you open the app."
+          iconBg="#FAEEDA"
+        />
+      </View>
+
+      {/* ───── HOW IT WORKS ───── */}
+      <View style={styles.section}>
+        <Text style={styles.sectionLabel}>SETUP IN MINUTES</Text>
+        <Text style={styles.sectionTitle}>How it works</Text>
+
+        <StepItem number="1" title="Create your account"
+          desc="Sign up with your name and clinic details. Takes under 60 seconds." />
+        <StepItem number="2" title="Add your patients"
+          desc="Enter patient profiles and store history and notes instantly." />
+        <StepItem number="3" title="Manage with ease"
+          desc="View appointments, track records, and run your clinic from anywhere." last />
+      </View>
+
+      {/* ───── TRUSTED SECTION ───── */}
+      <View style={styles.trustCard}>
+        <Text style={styles.trustStat}>500+</Text>
+        <Text style={styles.trustLabel}>Doctors using this app</Text>
+        <View style={styles.trustDivider} />
+        <Text style={styles.trustSub}>
+          From general physicians to specialists —{'\n'}trusted by clinics across India.
+        </Text>
+      </View>
+
+      {/* ───── BOTTOM CTA ───── */}
+      <View style={styles.bottomCta}>
+        <TouchableOpacity
+          style={styles.btnFull}
+          onPress={() => navigation.navigate('Signup')}
+        >
+          <Text style={styles.btnFullText}>Create Free Account</Text>
+        </TouchableOpacity>
+        <Text style={styles.loginHint}>
+          Already have an account?{' '}
+          <Text
+            style={styles.loginLink}
+            onPress={() => navigation.navigate('Login')}
+          >
+            Log in
+          </Text>
+        </Text>
+      </View>
+
+    </ScrollView>
+  );
+}
+
+/* ─── Small reusable components ─── */
+
+function FeatureCard({ emoji, title, desc, iconBg }) {
+  return (
+    <View style={styles.featureCard}>
+      <View style={[styles.featureIcon, { backgroundColor: iconBg }]}>
+        <Text style={{ fontSize: 20 }}>{emoji}</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.featureTitle}>{title}</Text>
+        <Text style={styles.featureDesc}>{desc}</Text>
+      </View>
+    </View>
+  );
+}
+
+function StepItem({ number, title, desc, last }) {
+  return (
+    <View style={styles.step}>
+      <View style={styles.stepLeft}>
+        <View style={styles.stepNum}>
+          <Text style={styles.stepNumText}>{number}</Text>
+        </View>
+        {!last && <View style={styles.stepLine} />}
+      </View>
+      <View style={styles.stepContent}>
+        <Text style={styles.stepTitle}>{title}</Text>
+        <Text style={styles.stepDesc}>{desc}</Text>
+      </View>
+    </View>
+  );
+}
+
+/* ─── All styles in one place ─── */
+
+const styles = StyleSheet.create({
+  screen: { backgroundColor: '#F0F4F8' },
+
+  /* Hero */
+  hero: { backgroundColor: '#1B4F72', padding: 32, alignItems: 'center' },
+  badge: {
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    paddingHorizontal: 12, paddingVertical: 4,
+    borderRadius: 20, marginBottom: 16,
+  },
+  badgeText: { color: '#A8D8F0', fontSize: 12 },
+  heroTitle: {
+    color: '#fff', fontSize: 26, fontWeight: '700',
+    textAlign: 'center', lineHeight: 34, marginBottom: 12,
+  },
+  heroAccent: { color: '#5DCAA5' },
+  heroSub: {
+    color: '#A8C8D8', fontSize: 14,
+    textAlign: 'center', lineHeight: 22, marginBottom: 28,
+  },
+  btnRow: { flexDirection: 'row', gap: 10 },
+  btnPrimary: {
+    backgroundColor: '#5DCAA5', paddingHorizontal: 24,
+    paddingVertical: 12, borderRadius: 10, flex: 1,
+  },
+  btnPrimaryText: { color: '#04342C', fontWeight: '700', textAlign: 'center', fontSize: 14 },
+  btnSecondary: {
+    borderColor: 'rgba(255,255,255,0.35)', borderWidth: 1.5,
+    paddingHorizontal: 24, paddingVertical: 12, borderRadius: 10, flex: 1,
+  },
+  btnSecondaryText: { color: '#fff', fontWeight: '500', textAlign: 'center', fontSize: 14 },
+
+  /* Sections */
+  section: { padding: 20 },
+  sectionLabel: {
+    fontSize: 11, fontWeight: '700',
+    color: '#1B4F72', letterSpacing: 1, marginBottom: 6,
+  },
+  sectionTitle: {
+    fontSize: 18, fontWeight: '700',
+    color: '#1A2B3C', marginBottom: 16,
+  },
+
+  /* Feature cards */
+  featureCard: {
+    backgroundColor: '#fff', borderRadius: 14,
+    padding: 14, marginBottom: 10,
+    flexDirection: 'row', alignItems: 'flex-start', gap: 12,
+    borderWidth: 0.5, borderColor: '#D8E4EE',
+  },
+  featureIcon: {
+    width: 40, height: 40, borderRadius: 10,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  featureTitle: { fontSize: 14, fontWeight: '700', color: '#1A2B3C', marginBottom: 3 },
+  featureDesc: { fontSize: 12.5, color: '#6B7D8E', lineHeight: 18 },
+
+  /* Steps */
+  step: { flexDirection: 'row', gap: 14 },
+  stepLeft: { alignItems: 'center', width: 32 },
+  stepNum: {
+    width: 32, height: 32, borderRadius: 16,
+    backgroundColor: '#1B4F72',
+    alignItems: 'center', justifyContent: 'center',
+  },
+  stepNumText: { color: '#fff', fontSize: 13, fontWeight: '700' },
+  stepLine: { width: 2, flex: 1, backgroundColor: '#D8E4EE', minHeight: 28, marginVertical: 4 },
+  stepContent: { flex: 1, paddingBottom: 24 },
+  stepTitle: { fontSize: 14, fontWeight: '700', color: '#1A2B3C', marginBottom: 2 },
+  stepDesc: { fontSize: 12.5, color: '#6B7D8E', lineHeight: 18 },
+
+  /* Trust */
+  trustCard: {
+    backgroundColor: '#1B4F72', borderRadius: 16,
+    padding: 24, margin: 20, alignItems: 'center',
+  },
+  trustStat: { fontSize: 36, fontWeight: '800', color: '#5DCAA5' },
+  trustLabel: { fontSize: 13, color: '#A8C8D8', marginBottom: 10 },
+  trustDivider: { width: 40, height: 2, backgroundColor: 'rgba(255,255,255,0.15)', marginBottom: 10 },
+  trustSub: { fontSize: 12, color: '#7AAEC8', textAlign: 'center', lineHeight: 18 },
+
+  /* Bottom CTA */
+  bottomCta: { padding: 20, alignItems: 'center' },
+  btnFull: {
+    backgroundColor: '#1B4F72', borderRadius: 12,
+    paddingVertical: 14, width: '100%', alignItems: 'center',
+  },
+  btnFullText: { color: '#fff', fontSize: 15, fontWeight: '700' },
+  loginHint: { marginTop: 12, fontSize: 12, color: '#6B7D8E' },
+  loginLink: { color: '#1B4F72', fontWeight: '700' },
+});
