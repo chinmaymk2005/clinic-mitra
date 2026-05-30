@@ -15,13 +15,12 @@ export default function WelcomeScreen({ navigation }) {
                     </View>
 
                     <Text style={styles.heroTitle}>
-                        Manage Patients, {'\n'}
-                        <Text style={styles.heroAccent}>Not Paperwork</Text>
+                        More Healing, {'\n'}
+                        <Text style={styles.heroAccent}>Less Handling</Text>
                     </Text>
 
                     <Text style={styles.heroSub}>
-                        Everything you need to run your clinic — appointments,
-                        patient records, and more. In one place.
+                        Focus on patients. We'll handle the rest — from records to appointments, all in one place.
                     </Text>
 
                     <View style={styles.btnRow}>
@@ -77,6 +76,7 @@ export default function WelcomeScreen({ navigation }) {
 
                 </View>
 
+                {/* Steps */}
                 <View style={styles.section}>
 
                     <Text style={styles.sectionLabel}>STEP IN MINUTES</Text>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     },
     // Hero 
     hero: {
-        backgroundColor: '#1B4F72',
+        backgroundColor: '#2563EB',
 
         alignItems: 'center',
         // borderBottomEndRadius:15,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         marginBottom: 16
     },
     badgeText: {
-        color: '#A8D8F0',
+        color: 'rgba(255,255,255,0.75)',
         fontSize: 12,
     },
     heroTitle: {
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         color: '#5DCAA5'
     },
     heroSub: {
-        color: '#A8D8C8',
+        color: 'rgba(255,255,255,0.75)',
         fontSize: 14,
         textAlign: 'center',
         lineHeight: 21,
