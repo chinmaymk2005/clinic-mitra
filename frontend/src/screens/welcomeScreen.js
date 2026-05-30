@@ -76,6 +76,68 @@ export default function WelcomeScreen({ navigation }) {
                     </View>
 
                 </View>
+
+                <View style={styles.section}>
+
+                    <Text style={styles.sectionLabel}>STEP IN MINUTES</Text>
+                    <Text style={styles.sectionTitle}>How it works</Text>
+
+                    {/* Step 1 */}
+                    <View style={styles.step}>
+
+                        <View style={styles.stepLeft}>
+                            <View style={styles.stepNum}>
+                                <Text style={styles.stepNumText}>1</Text>
+                            </View>
+                            <View style={styles.stepLine} />
+                        </View>
+
+                        <View style={styles.stepContent}>
+                            <Text style={styles.stepTitle}>Create your account</Text>
+                            <Text style={styles.stepDesc}>
+                                Sign up with your name and clinic details. Takes under 60 seconds.
+                            </Text>
+                        </View>
+                    </View> 
+
+                    {/* Step 2 */}
+                    <View style={styles.step}>
+
+                        <View style={styles.stepLeft}>
+                            <View style={styles.stepNum}>
+                                <Text style={styles.stepNumText}>2</Text>
+                            </View>
+                            <View style={styles.stepLine} />
+                        </View>
+
+                        <View style={styles.stepContent}>
+                            <Text style={styles.stepTitle}>Add your patients</Text>
+                            <Text style={styles.stepDesc}>
+                                Enter patient profiles and store history and notes instantly.
+                            </Text>
+                        </View>
+                    </View>
+
+                    {/* Step 3 */}
+                    <View style={styles.step}>
+
+                        <View style={styles.stepLeft}>
+                            <View style={styles.stepNum}>
+                                <Text style={styles.stepNumText}>3</Text>
+                            </View>                            
+                        </View>
+
+                        <View style={styles.stepContent}>
+                            <Text style={styles.stepTitle}>Manage with ease</Text>
+                            <Text style={styles.stepDesc}>
+                                View appointments, track records, and run your clinic from anywhere.
+                            </Text>
+                        </View>
+                    </View>
+
+                </View>
+
+
             </ScrollView>
         </View>
 
@@ -158,56 +220,103 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     // Feature Section
-    section:{
-        padding:20,
+    section: {
+        padding: 20,
     },
-    sectionLabel:{
-        fontSize:11,
-        fontWeight:'700',
-        color:'#1B4F72',
-        letterSpacing:1,
-        marginBottom:6
+    sectionLabel: {
+        fontSize: 11,
+        fontWeight: '700',
+        color: '#1B4F72',
+        letterSpacing: 1,
+        marginBottom: 6
     },
-    sectionTitle:{
-        fontSize:28,
-        fontWeight:'700',
-        color:'#1A2B3C',
-        marginBottom:16
+    sectionTitle: {
+        fontSize: 28,
+        fontWeight: '700',
+        color: '#1A2B3C',
+        marginBottom: 16
     },
-    featureCard:{
-        backgroundColor:'#ffffff',
-        borderRadius:14,
-        padding:14,
-        marginBottom:13,
+    featureCard: {
+        backgroundColor: '#ffffff',
+        borderRadius: 14,
+        padding: 14,
+        marginBottom: 13,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        gap: 14,
+        borderWidth: 1,
+        borderColor: '#D8E4EE'
+    },
+    featureIcon: {
+        width: 40,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10
+    },
+    featureEmoji: {
+        fontSize: 20
+    },
+    featureText: {
+        flex: 1,
+        flexShrink: 1
+    },
+    featureTitle: {
+        fontSize: 14,
+        color: '#1A2B3C',
+        fontWeight: '700',
+        marginBottom: 3,
+    },
+    featureDesc: {
+        fontSize: 12,
+        color: '#6B7D8E',
+        lineHeight: 18
+    },
+
+    // Working Steps Section
+    step:{
         flexDirection:'row',
-        alignItems:'flex-start',
-        gap:14,
-        borderWidth:1,
-        borderColor:'#D8E4EE'
+        gap:14
     },
-    featureIcon:{
-        width:40,
-        height:40,
+    stepLeft:{
+        alignItems:'center',
+        width:32,        
+    },
+    stepNum:{
+        width:32,
+        height:32,
+        borderRadius:16,
+        backgroundColor:'#1B4F72',
         alignItems:'center',
         justifyContent:'center',
-        borderRadius:10
+        borderRadius:16
     },
-    featureEmoji:{
-        fontSize:20     
+    stepNumText:{
+        color:'#ffffff',
+        fontSize:13,
+        fontWeight:'700'
     },
-    featureText:{
+    stepLine:{
+        width:2,
         flex:1,
-        flexShrink:1     
+        minHeight:28,
+        backgroundColor:'#D8E4EE',
+        marginVertical:4
     },
-    featureTitle:{
-        fontSize:14,
-        color:'#1A2B3C',
+    stepContent:{
+        flex:1,
+        paddingBottom:24,
+        flexShrink:1
+    },
+    stepTitle:{
+        fontSize:12,
         fontWeight:'700',
-        marginBottom:3,        
+        color:'#1A2B3C',
+        marginBottom:3
     },
-    featureDesc:{
+    stepDesc:{
         fontSize:12,
         color:'#6B7D8E',
-        lineHeight:18
+        lineHeight:18,                
     }
 });
